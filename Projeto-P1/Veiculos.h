@@ -2,7 +2,7 @@
 class Veiculos
 {
 public:
-	Veiculos();
+	Veiculos(int, int);
 	~Veiculos();
 	void move();
 private:
