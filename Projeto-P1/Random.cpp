@@ -6,6 +6,7 @@
 
 Random::Random(int a, int b)
 {
+	// cria o objeto Random com intervalo (a,b)
 	this->a = a;
 	this->b = b;
 }
@@ -18,8 +19,11 @@ Random::~Random()
 
 int Random::generate()
 {
-	std::mt19937 mt(time(nullptr)); // shitty seeding, less shitty generator
-	int x = std::uniform_int_distribution<int>(a, b)(mt); // good uniform distribution
-	//std::shuffle(vec.begin(), vec.end(), mt);
+	// gera um número aleatório no intervalo (a,b)
+
+	std::mt19937 mt(time(nullptr));								// seeding, generator
+	int x = std::uniform_int_distribution<int>(a, b)(mt);		// uniform distribution
+	//std::shuffle(vec.begin(), vec.end(), mt);					// shuffle vector
+
 	return x;
 }
