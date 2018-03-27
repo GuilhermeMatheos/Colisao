@@ -2,6 +2,7 @@
 #include "Veiculos.h"
 #include "Random.h"
 
+
 Veiculos::Veiculos(int x, int y, int v)
 {
 	/* cria o veículo na posicao (x,y)

@@ -5,7 +5,7 @@ public:
 	Veiculos(int, int, int);
 	~Veiculos();
 	void move();
-private:
+protected:
 	int x;
 	int y;
 	int v;
