@@ -5,6 +5,7 @@ public:
 	Veiculos(int x, int y);
 	~Veiculos();
 	void setVelocidade(int v);
+	void setPosicao();
 	void move();
 protected:
 	int x;

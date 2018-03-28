@@ -4,7 +4,11 @@ class Mundo
 public:
 	Mundo();
 	~Mundo();
+	void desenhaPadrao();
+	void printMundo();
 private:
-	int mapa[1800];
+	int tamanho_x;
+	int tamanho_y;
+	int mapa[30][60];
 };
 

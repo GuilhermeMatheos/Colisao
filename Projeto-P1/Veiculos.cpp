@@ -17,10 +17,12 @@ Veiculos::~Veiculos()
 {
 }
 
+
 void Veiculos::setVelocidade(int v)
 {
 	this->v = v;
 }
+
 
 void Veiculos::move()
 {
