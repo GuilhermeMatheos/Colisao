@@ -4,13 +4,14 @@
 
 Mundo::Mundo()
 {
-	/* cria um mapa padrão com 30 linhas e 60 colunas
-	   e obstáculos */
+	/*	Cria um mapa padrão com 30 linhas e 60 colunas
+		e obstáculos	*/
 
 	tamanho_x = 30;
 	tamanho_y = 60;
 
 	setPadrao();
+	setObstaculo(3, 3, 3, 4);
 }
 
 
@@ -21,8 +22,8 @@ Mundo::~Mundo()
 
 void Mundo::setPadrao()
 {
-	/* inicializa o mundo padrão com 
-	   bordas (1) e obstáculos (2) */
+	/*	Determina o mundo padrão com 
+		bordas (1)	*/
 
 	int i;
 	int j;
@@ -53,6 +54,29 @@ void Mundo::setPadrao()
 	}
 }
 
+void Mundo::setObstaculo(int x, int y, int w, int h) 
+{
+	/*	Determina obstáculos (2) 
+		Posicao obstáculo = x, y
+	    Tamanho dos obstaculos = w, h	*/
+
+
+	for (int i = 0; i < tamanho_x; i++)
+	{
+		for (int j = 0; j < tamanho_y; j++)
+		{
+			// obstáculo 1 na posição x, y com tamanho w1, h1
+			if (i == x && j == y)
+			{
+				for (int k = 0; k < 3; k++)
+				{
+					for (int l = 0; l < 4; l++)
+						mapa[i + k][j + l] = 2;
+				}
+			}
+		}
+	}
+}
 
 void Mundo::printMundo()
 {
