@@ -1,4 +1,8 @@
 #include "stdafx.h"
+#include "Veiculos.h"
+#include "Carro.h"
+#include "Moto.h"
+#include "Caminhao.h"
 #include "Mundo.h"
 
 
@@ -76,6 +80,13 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 			}
 		}
 	}
+}
+
+void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
+{
+	mapa[car.getX()][car.getY()] = 3;
+	mapa[truck.getX()][truck.getY()] = 4;
+	mapa[bike.getX()][bike.getY()] = 5;
 }
 
 void Mundo::printMundo()

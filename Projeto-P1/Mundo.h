@@ -5,6 +5,7 @@ public:
 	Mundo();
 	~Mundo();
 	void printMundo();
+	void setVeiculos(Carro, Caminhao, Moto);
 private:
 	void setPadrao();
 	void setObstaculo(int, int, int, int);

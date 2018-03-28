@@ -17,6 +17,21 @@ Veiculos::~Veiculos()
 {
 }
 
+int Veiculos::getX()
+{
+	return x;
+}
+
+int Veiculos::getY()
+{
+	return y;
+}
+
+int Veiculos::getV()
+{
+	return v;
+}
+
 
 void Veiculos::setVelocidade(int v)
 {

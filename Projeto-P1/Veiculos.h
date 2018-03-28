@@ -4,8 +4,10 @@ class Veiculos
 public:
 	Veiculos(int x, int y);
 	~Veiculos();
+	int getX();
+	int getY();
+	int getV();
 	void setVelocidade(int v);
-	void setPosicao();
 	void move();
 protected:
 	int x;
