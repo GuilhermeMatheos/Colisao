@@ -5,8 +5,8 @@
 
 Veiculos::Veiculos(int x, int y)
 {
-	/* cria o veículo na posicao (x,y)
-	   com velocidade nula */
+	/* cria o veículo com posicao (x,y)
+	   e velocidade nula */
 	this->x = x;
 	this->y = y;
 	v = 0;

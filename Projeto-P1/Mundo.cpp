@@ -10,7 +10,7 @@ Mundo::Mundo()
 	tamanho_x = 30;
 	tamanho_y = 60;
 
-	desenhaPadrao();
+	setPadrao();
 }
 
 
@@ -19,17 +19,20 @@ Mundo::~Mundo()
 }
 
 
-void Mundo::desenhaPadrao()
+void Mundo::setPadrao()
 {
+	/* inicializa o mundo padrão com 
+	   bordas (1) e obstáculos (2) */
+
 	int i;
 	int j;
 
-	// desenha mundo vazio (0)
+	// mapa vazio (0)
 	for (i = 0; i < tamanho_x; i++)
 		for (j = 0; j < tamanho_y; j++)
 			mapa[i][j] = 0;
 
-	// desenha bordas (1)
+	// bordas (1)
 	for (i = 0; i < tamanho_x; i++)
 	{
 		for (j = 0; j < tamanho_y; j++)
@@ -53,6 +56,8 @@ void Mundo::desenhaPadrao()
 
 void Mundo::printMundo()
 {
+	// desenha o mundo no console
+
 	cout << "     Mundo    \n" << endl;
 
 	for (int i = 0; i < tamanho_x; i++)

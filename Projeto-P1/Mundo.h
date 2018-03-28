@@ -4,7 +4,7 @@ class Mundo
 public:
 	Mundo();
 	~Mundo();
-	void desenhaPadrao();
+	void setPadrao();
 	void printMundo();
 private:
 	int tamanho_x;
