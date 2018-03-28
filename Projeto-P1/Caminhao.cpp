@@ -2,8 +2,9 @@
 #include "Caminhao.h"
 
 
-Caminhao::Caminhao(int x, int y, int capacidade_carga) : Veiculos(x, y, 1)
+Caminhao::Caminhao(int x, int y, int capacidade_carga) : Veiculos(x, y)
 {
+	setVelocidade(1);
 	this->capacidade_carga = capacidade_carga;
 }
 

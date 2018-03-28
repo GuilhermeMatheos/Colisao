@@ -3,13 +3,12 @@
 #include "Random.h"
 
 
-Veiculos::Veiculos(int x, int y, int v)
+Veiculos::Veiculos(int x, int y)
 {
 	/* cria o veículo na posicao (x,y)
 	   com velocidade v */
 	this->x = x;
 	this->y = y;
-	this->v = v;
 }
 
 
@@ -17,6 +16,10 @@ Veiculos::~Veiculos()
 {
 }
 
+void Veiculos::setVelocidade(int v)
+{
+	this->v = v;
+}
 
 void Veiculos::move()
 {
