@@ -2,7 +2,7 @@
 class Random
 {
 public:
-	Random(int, int);
+	Random(int a, int b);
 	~Random();
 	int generate();
 private:

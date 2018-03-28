@@ -2,7 +2,7 @@
 class Veiculos
 {
 public:
-	Veiculos(int, int, int);
+	Veiculos(int x, int y, int v);
 	~Veiculos();
 	void move();
 protected:

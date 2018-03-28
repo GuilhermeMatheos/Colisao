@@ -4,7 +4,7 @@ class Moto :
 	public Veiculos
 {
 public:
-	Moto(int, int , int , string);
+	Moto(int x, int y, int v, string tipo);
 	~Moto();
 private:
 	string tipo;
