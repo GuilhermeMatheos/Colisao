@@ -2,7 +2,7 @@
 #include "Caminhao.h"
 
 
-Caminhao::Caminhao(int x, int y, int v, int capacidade_carga) : Veiculos(x, y, v)
+Caminhao::Caminhao(int x, int y, int capacidade_carga) : Veiculos(x, y, 1)
 {
 	this->capacidade_carga = capacidade_carga;
 }
