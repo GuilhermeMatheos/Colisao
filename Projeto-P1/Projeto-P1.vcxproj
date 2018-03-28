@@ -150,6 +150,7 @@
     <ClInclude Include="Caminhao.h" />
     <ClInclude Include="Carro.h" />
     <ClInclude Include="Moto.h" />
+    <ClInclude Include="Mundo.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="Caminhao.cpp" />
     <ClCompile Include="Carro.cpp" />
     <ClCompile Include="Moto.cpp" />
+    <ClCompile Include="Mundo.cpp" />
     <ClCompile Include="Projeto-P1.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="stdafx.cpp">
