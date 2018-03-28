@@ -35,7 +35,7 @@ void Mundo::setPadrao()
 	// mapa vazio (0)
 	for (i = 0; i < tamanho_x; i++)
 		for (j = 0; j < tamanho_y; j++)
-			mapa[i][j] = 0;
+			mapa[i][j] = '0';
 
 	// bordas (1)
 	for (i = 0; i < tamanho_x; i++)
@@ -44,16 +44,16 @@ void Mundo::setPadrao()
 		{
 			// primeira linha com 1
 			if (i == 0)
-				mapa[i][j] = 1;
+				mapa[i][j] = '1';
 			// ultima linha com 1
 			if (i == (tamanho_x - 1))
-				mapa[i][j] = 1;
+				mapa[i][j] = '1';
 			// coluna esquerda com 1
 			if (j == 0)
-				mapa[i][j] = 1;
+				mapa[i][j] = '1';
 			// coluna direita com 1
 			if (j == (tamanho_y - 1))
-				mapa[i][j] = 1;
+				mapa[i][j] = '1';
 		}
 	}
 }
@@ -63,7 +63,6 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 	/*	Determina obstáculos (2) 
 		Posicao obstáculo = x, y
 	    Tamanho dos obstaculos = w, h	*/
-
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
@@ -75,7 +74,7 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 				for (int k = 0; k < 3; k++)
 				{
 					for (int l = 0; l < 4; l++)
-						mapa[i + k][j + l] = 2;
+						mapa[i + k][j + l] = '2';
 				}
 			}
 		}
@@ -84,9 +83,9 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 
 void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
 {
-	mapa[car.getX()][car.getY()] = 3;
-	mapa[truck.getX()][truck.getY()] = 4;
-	mapa[bike.getX()][bike.getY()] = 5;
+	mapa[car.getX()][car.getY()] = '%';
+	mapa[truck.getX()][truck.getY()] = '@';
+	mapa[bike.getX()][bike.getY()] = '*';
 }
 
 void Mundo::printMundo()
@@ -105,5 +104,5 @@ void Mundo::printMundo()
 		cout << endl;
 	}
 
-	cout << endl;
+	cout <<endl;
 }

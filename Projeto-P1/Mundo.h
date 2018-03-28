@@ -11,6 +11,6 @@ private:
 	void setObstaculo(int, int, int, int);
 	int tamanho_x;
 	int tamanho_y;
-	int mapa[30][60];
+	char mapa[30][60];
 };
 
