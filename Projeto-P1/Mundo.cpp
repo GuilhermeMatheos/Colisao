@@ -98,9 +98,20 @@ void Mundo::printMundo()
 	{
 		cout << "    ";
 
-		for (int j = 0; j < tamanho_y; j++)
-			cout << mapa[i][j] << " ";
-
+		for (int j = 0; j < tamanho_y; j++) 
+		{
+			if (mapa[i][j] == '0')
+			{
+				// determina cor do texto no console, e imprime char
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+				cout << mapa[i][j] << " ";
+			}
+			else
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+				cout << mapa[i][j] << " ";
+			}
+		}
 		cout << endl;
 	}
 
