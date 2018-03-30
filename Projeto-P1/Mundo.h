@@ -4,10 +4,10 @@ class Mundo
 public:
 	Mundo();
 	~Mundo();
-	void printMundo();
+	void setMundo();
 	void setVeiculos(Carro, Caminhao, Moto);
+	void printMundo();
 private:
-	void setPadrao();
 	void setObstaculo(int, int, int, int);
 	void setCursorPosition(int, int);
 	int tamanho_x;

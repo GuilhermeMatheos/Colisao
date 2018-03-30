@@ -30,9 +30,7 @@ Mundo::Mundo()
 
 	tamanho_x = 30;
 	tamanho_y = 60;
-
-	setPadrao();
-	setObstaculo(3, 3, 3, 4);
+	setMundo();
 }
 
 
@@ -41,7 +39,7 @@ Mundo::~Mundo()
 }
 
 
-void Mundo::setPadrao()
+void Mundo::setMundo()
 {
 	/*	Determina o mundo padrão com 
 		bordas (1)	*/
@@ -69,6 +67,9 @@ void Mundo::setPadrao()
 				mapa[i][j] = '1';
 		}
 	}
+
+	// obstáculos (2)
+	setObstaculo(3, 3, 3, 4);
 }
 
 
