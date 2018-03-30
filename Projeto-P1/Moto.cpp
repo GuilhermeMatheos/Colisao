@@ -2,8 +2,9 @@
 #include "Moto.h"
 
 
-Moto::Moto(int x, int y, string tipo) : Veiculos(x, y)
+Moto::Moto(int x, int y) : Veiculos(x, y)
 {
+	tipo = "corrida";
 	setVelocidade(3);
 	this->tipo = tipo;
 }

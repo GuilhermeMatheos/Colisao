@@ -4,7 +4,7 @@ class Caminhao :
 	public Veiculos
 {
 public:
-	Caminhao(int x, int y, int capacidade_carga);
+	Caminhao(int x, int y);
 	~Caminhao();
 private:
 	int capacidade_carga;
