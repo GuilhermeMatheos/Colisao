@@ -157,6 +157,21 @@ void Mundo::printMundo()
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 				cout << mapa[i][j] << " ";
 			}
+			else if (mapa[i][j] == '%')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLUE);
+				cout << mapa[i][j] << " ";
+			}
+			else if (mapa[i][j] == '@')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+				cout << mapa[i][j] << " ";
+			}
+			else if (mapa[i][j] == '*')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), MAGENTA);
+				cout << mapa[i][j] << " ";
+			}
 			else
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), DARKGRAY);
