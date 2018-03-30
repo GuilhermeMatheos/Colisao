@@ -44,8 +44,8 @@ void Veiculos::move()
 	/* movimenta o veículo aleatoriamente
 	   com velocidade v */
 
-	Random r = Random(1, 4);
-	int d = r.generate();
+	Random r = Random();
+	int d = r.generate(1, 4);
 
 	if (d == 1) 
 	{

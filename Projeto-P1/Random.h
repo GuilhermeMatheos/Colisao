@@ -2,10 +2,8 @@
 class Random
 {
 public:
-	Random(int a, int b);
+	Random();
 	~Random();
-	int generate();
-private:
-	int a, b;
+	int generate(int a, int b);
 };
 

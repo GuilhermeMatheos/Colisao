@@ -39,6 +39,18 @@ Mundo::~Mundo()
 }
 
 
+int Mundo::get_tamanho_x()
+{
+	return tamanho_x;
+}
+
+
+int Mundo::get_tamanho_y()
+{
+	return tamanho_y;
+}
+
+
 void Mundo::setMundo()
 {
 	/*	Determina o mundo padrão com 

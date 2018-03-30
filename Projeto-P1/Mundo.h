@@ -6,6 +6,8 @@ public:
 	~Mundo();
 	void setMundo();
 	void setVeiculos(Carro, Caminhao, Moto);
+	int get_tamanho_x();
+	int get_tamanho_y();
 	void printMundo();
 private:
 	void setObstaculo(int, int, int, int);
