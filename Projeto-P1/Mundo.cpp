@@ -71,6 +71,7 @@ void Mundo::setPadrao()
 	}
 }
 
+
 void Mundo::setObstaculo(int x, int y, int w, int h) 
 {
 	/*	Determina obstáculos (2) 
