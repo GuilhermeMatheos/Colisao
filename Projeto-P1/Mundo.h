@@ -12,6 +12,6 @@ private:
 	void setCursorPosition(int, int);
 	int tamanho_x;
 	int tamanho_y;
-	char mapa[50][120];
+	char mapa[40][120];
 };
 

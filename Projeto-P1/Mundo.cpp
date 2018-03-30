@@ -25,10 +25,10 @@
 
 Mundo::Mundo()
 {
-	/*	Cria um mapa padrão com 30 linhas e 60 colunas
+	/*	Cria um mapa padrão com 40 linhas e 120 colunas
 		e obstáculos	*/
 
-	tamanho_x = 50;
+	tamanho_x = 40;
 	tamanho_y = 120;
 	setMundo();
 }
