@@ -3,13 +3,16 @@
 #include "Random.h"
 
 
-Veiculos::Veiculos(int x, int y)
+Veiculos::Veiculos(int tamanho_x, int tamanho_y)
 {
-	/* cria o veículo com posicao (x,y)
-	   e velocidade nula */
-	this->x = x;
-	this->y = y;
+	/* cria o veículo com posicao (x,y) aleatória
+	*/
+	Random rnd = Random();
+	x = rnd.generate(1, tamanho_x);
+	y = rnd.generate(1, tamanho_y);
+
 	v = 0;
+	fabrica = false;
 }
 
 
@@ -17,19 +20,34 @@ Veiculos::~Veiculos()
 {
 }
 
+
 int Veiculos::getX()
 {
 	return x;
 }
+
 
 int Veiculos::getY()
 {
 	return y;
 }
 
+
 int Veiculos::getV()
 {
 	return v;
+}
+
+
+void Veiculos::setX(int x)
+{
+	this->x = x;
+}
+
+
+void Veiculos::setY(int y)
+{
+	this->y = y;
 }
 
 
@@ -44,8 +62,8 @@ void Veiculos::move()
 	/* movimenta o veículo aleatoriamente
 	   com velocidade v */
 
-	Random r = Random();
-	int d = r.generate(1, 4);
+	Random rnd = Random();
+	int d = rnd.generate(1, 4);
 
 	if (d == 1) 
 	{

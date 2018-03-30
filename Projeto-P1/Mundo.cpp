@@ -41,13 +41,15 @@ Mundo::~Mundo()
 
 int Mundo::get_tamanho_x()
 {
-	return tamanho_x;
+	// retorma tamanho x sem incluir a borda
+	return tamanho_x-2;
 }
 
 
 int Mundo::get_tamanho_y()
 {
-	return tamanho_y;
+	// retorma tamanho y sem incluir a borda
+	return tamanho_y-2;
 }
 
 
@@ -69,20 +71,20 @@ void Mundo::setVeiculos(Carro *car, Caminhao *truck, Moto *bike)
 {
 	// Determina posição dos veículos
 
-	if ((car->getX() >= 0 && car->getX() <= tamanho_x) &&
-		(car->getY() >= 0 && car->getY() <= tamanho_y))
+	if ((car->getX() >= 0 && car->getX() <= get_tamanho_x()) &&
+		(car->getY() >= 0 && car->getY() <= get_tamanho_y()))
 	{
 		map[car->getX()][car->getY()] = '%';
 	}
 
-	if ((truck->getX() >= 0 && truck->getX() <= tamanho_x) &&
-		(truck->getY() >= 0 && truck->getY() <= tamanho_y))
+	if ((truck->getX() >= 0 && truck->getX() <= get_tamanho_x()) &&
+		(truck->getY() >= 0 && truck->getY() <= get_tamanho_y()))
 	{
 		map[truck->getX()][truck->getY()] = '@';
 	}
 
-	if ((bike->getX() >= 0 && bike->getX() <= tamanho_x) &&
-		(bike->getY() >= 0 && bike->getY() <= tamanho_y))
+	if ((bike->getX() >= 0 && bike->getX() <= get_tamanho_x()) &&
+		(bike->getY() >= 0 && bike->getY() <= get_tamanho_y()))
 	{
 		map[bike->getX()][bike->getY()] = '+';
 	}
@@ -95,10 +97,62 @@ void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
 	truck->move();
 	bike->move();
 
-	if ((car->getX() <= 0 && car->getX() >= tamanho_x) &&
-		(car->getY() <= 0 && car->getY() >= tamanho_y))
+
+	// carro
+	if (car->getX() <= 0)
 	{
-		// move para parede oposta
+		car->setX(get_tamanho_x());
+	}
+	else if (car->getX() >= get_tamanho_x())
+	{
+		car->setX(1);
+	}
+
+	if (car->getY() >= get_tamanho_y())
+	{
+		car->setY(get_tamanho_y());
+	}
+	else if (car->getY() >= get_tamanho_y())
+	{
+		car->setY(1);
+	}
+
+	// caminhão
+	if (truck->getX() <= 0)
+	{
+		truck->setX(get_tamanho_x());
+	}
+	else if (truck->getX() >= get_tamanho_x())
+	{
+		truck->setX(1);
+	}
+
+	if (truck->getY() <= 0)
+	{
+		truck->setY(get_tamanho_y());
+	}
+	else if (truck->getY() >= get_tamanho_y())
+	{
+		truck->setY(1);
+	}
+
+	// bike
+	if (bike->getX() <= 0)
+	{
+		bike->setX(get_tamanho_x());
+	}
+	else if (bike->getX() >= get_tamanho_x())
+	{
+		bike->setX(1);
+	}
+
+	if (bike->getY() <= 0)
+	{
+		bike->setY(get_tamanho_y());
+	}
+	else if (bike->getY() >= get_tamanho_y())
+	{
+		bike->setY(1);
 	}
 }
 

@@ -2,11 +2,13 @@
 class Veiculos
 {
 public:
-	Veiculos(int x, int y);
+	Veiculos(int tamanho_x, int tamanho_y);
 	~Veiculos();
 	int getX();
 	int getY();
 	int getV();
+	void setX(int x);
+	void setY(int y);
 	void setVelocidade(int v);
 	void move();
 protected:
