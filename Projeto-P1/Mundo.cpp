@@ -5,6 +5,23 @@
 #include "Caminhao.h"
 #include "Mundo.h"
 
+#define BLACK			0
+#define BLUE			1
+#define GREEN			2
+#define CYAN			3
+#define RED				4
+#define MAGENTA			5
+#define BROWN			6
+#define LIGHTGRAY		7
+#define DARKGRAY		8
+#define LIGHTBLUE		9
+#define LIGHTGREEN		10
+#define LIGHTCYAN		11
+#define LIGHTRED		12
+#define LIGHTMAGENTA	13
+#define YELLOW			14
+#define WHITE			15
+
 
 Mundo::Mundo()
 {
@@ -42,17 +59,13 @@ void Mundo::setPadrao()
 	{
 		for (j = 0; j < tamanho_y; j++)
 		{
-			// primeira linha com 1
-			if (i == 0)
+			if (i == 0)								// primeira linha
+				mapa[i][j] = '1';					
+			if (i == (tamanho_x - 1))				// ultima linha
 				mapa[i][j] = '1';
-			// ultima linha com 1
-			if (i == (tamanho_x - 1))
+			if (j == 0)								// coluna esquerda
 				mapa[i][j] = '1';
-			// coluna esquerda com 1
-			if (j == 0)
-				mapa[i][j] = '1';
-			// coluna direita com 1
-			if (j == (tamanho_y - 1))
+			if (j == (tamanho_y - 1))				// coluna direita
 				mapa[i][j] = '1';
 		}
 	}
@@ -81,12 +94,27 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 	}
 }
 
+
+void Mundo::setCursorPosition(int x, int y)
+{
+	/* Determina posição do cursor 
+	   x é coluna, y é linha. A origem (0,0) 
+	   é o canto superior esquerdo.	*/
+	
+	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	std::cout.flush();
+	COORD coord = { (SHORT)x, (SHORT)y };
+	SetConsoleCursorPosition(hOut, coord);
+}
+
+
 void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
 {
-	mapa[car.getX()][car.getY()] = '%';
+	mapa[car.getX()][car.getY()] = '%'; 
 	mapa[truck.getX()][truck.getY()] = '@';
 	mapa[bike.getX()][bike.getY()] = '*';
 }
+
 
 void Mundo::printMundo()
 {
@@ -103,17 +131,23 @@ void Mundo::printMundo()
 			if (mapa[i][j] == '0')
 			{
 				// determina cor do texto no console, e imprime char
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 10);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), GREEN);
+				cout << mapa[i][j] << " ";
+			}
+			else if (mapa[i][j] == '2')
+			{
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 				cout << mapa[i][j] << " ";
 			}
 			else
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), DARKGRAY);
 				cout << mapa[i][j] << " ";
 			}
 		}
 		cout << endl;
 	}
 
-	cout <<endl;
+	// retorna cursor para poisção inicial
+	setCursorPosition(0, 0);
 }
