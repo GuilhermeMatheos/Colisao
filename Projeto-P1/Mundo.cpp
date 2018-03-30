@@ -53,7 +53,15 @@ int Mundo::get_tamanho_y()
 
 void Mundo::resetMap()
 {
+	// reseta o mundo
 
+	for (int i = 0; i < tamanho_x; i++)
+	{
+		for (int j = 0; j < tamanho_y; j++)
+		{
+			map[i][j] = defaultMap[i][j];
+		}
+	}
 }
 
 
