@@ -5,7 +5,8 @@ public:
 	Mundo();
 	~Mundo();
 	void setMundo();
-	void setVeiculos(Carro, Caminhao, Moto);
+	void setVeiculos(Carro *, Caminhao *, Moto *);
+	void movimenta(Carro *, Caminhao *, Moto *);
 	int get_tamanho_x();
 	int get_tamanho_y();
 	void printMundo();

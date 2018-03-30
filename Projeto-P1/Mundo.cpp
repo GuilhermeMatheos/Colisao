@@ -122,26 +122,40 @@ void Mundo::setCursorPosition(int x, int y)
 }
 
 
-void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
+void Mundo::setVeiculos(Carro *car, Caminhao *truck, Moto *bike)
 {
 	// Determina posição dos veículos
 
-	if ((car.getX() >= 0 && car.getX() <= tamanho_x) &&
-		(car.getY() >= 0 && car.getY() <= tamanho_y))
+	if ((car->getX() >= 0 && car->getX() <= tamanho_x) &&
+		(car->getY() >= 0 && car->getY() <= tamanho_y))
 	{
-		mapa[car.getX()][car.getY()] = '%';
+		mapa[car->getX()][car->getY()] = '%';
 	}
 	
-	if ((truck.getX() >= 0 && truck.getX() <= tamanho_x) &&
-		(truck.getY() >= 0 && truck.getY() <= tamanho_y))
+	if ((truck->getX() >= 0 && truck->getX() <= tamanho_x) &&
+		(truck->getY() >= 0 && truck->getY() <= tamanho_y))
 	{
-		mapa[truck.getX()][truck.getY()] = '@';
+		mapa[truck->getX()][truck->getY()] = '@';
 	}
 
-	if ((bike.getX() >= 0 && bike.getX() <= tamanho_x) &&
-		(bike.getY() >= 0 && bike.getY() <= tamanho_y))
+	if ((bike->getX() >= 0 && bike->getX() <= tamanho_x) &&
+		(bike->getY() >= 0 && bike->getY() <= tamanho_y))
 	{
-		mapa[bike.getX()][bike.getY()] = '+';
+		mapa[bike->getX()][bike->getY()] = '+';
+	}
+}
+
+
+void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
+{
+	car->move();
+	truck->move();
+	bike->move();
+
+	if ((car->getX() <= 0 && car->getX() >= tamanho_x) &&
+		(car->getY() <= 0 && car->getY() >= tamanho_y))
+	{
+		// move para parede oposta
 	}
 }
 
