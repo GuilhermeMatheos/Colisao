@@ -111,9 +111,25 @@ void Mundo::setCursorPosition(int x, int y)
 
 void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
 {
-	mapa[car.getX()][car.getY()] = '%'; 
-	mapa[truck.getX()][truck.getY()] = '@';
-	mapa[bike.getX()][bike.getY()] = '*';
+	// Determina posição dos veículos
+
+	if ((car.getX() >= 0 && car.getX() <= tamanho_x) &&
+		(car.getY() >= 0 && car.getY() <= tamanho_y))
+	{
+		mapa[car.getX()][car.getY()] = '%';
+	}
+	
+	if ((truck.getX() >= 0 && truck.getX() <= tamanho_x) &&
+		(truck.getY() >= 0 && truck.getY() <= tamanho_y))
+	{
+		mapa[truck.getX()][truck.getY()] = '@';
+	}
+
+	if ((bike.getX() >= 0 && bike.getX() <= tamanho_x) &&
+		(bike.getY() >= 0 && bike.getY() <= tamanho_y))
+	{
+		mapa[bike.getX()][bike.getY()] = '*';
+	}
 }
 
 
