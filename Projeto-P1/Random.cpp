@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Random.h"
 #include <random>
-#include <time.h>
 
 
 Random::Random()
