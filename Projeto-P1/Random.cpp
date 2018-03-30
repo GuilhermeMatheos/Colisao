@@ -21,9 +21,11 @@ int Random::generate()
 {
 	// gera um número aleatório no intervalo (a,b)
 
-	std::mt19937 mt(time(nullptr));								// seeding, generator
-	int x = std::uniform_int_distribution<int>(a, b)(mt);		// uniform distribution
-	//std::shuffle(vec.begin(), vec.end(), mt);					// shuffle vector
+	std::random_device rd; // obtain a random number from hardware
+	std::mt19937 eng(rd()); // seed the generator
+	std::uniform_int_distribution<> distr(1, 4); // define the range
+
+	int x = distr(eng);
 
 	return x;
 }
