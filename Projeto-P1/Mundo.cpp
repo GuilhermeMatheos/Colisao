@@ -28,8 +28,8 @@ Mundo::Mundo()
 	/*	Cria um mapa padrão com 30 linhas e 60 colunas
 		e obstáculos	*/
 
-	tamanho_x = 30;
-	tamanho_y = 60;
+	tamanho_x = 50;
+	tamanho_y = 120;
 	setMundo();
 }
 
@@ -129,7 +129,7 @@ void Mundo::setVeiculos(Carro car, Caminhao truck, Moto bike)
 	if ((bike.getX() >= 0 && bike.getX() <= tamanho_x) &&
 		(bike.getY() >= 0 && bike.getY() <= tamanho_y))
 	{
-		mapa[bike.getX()][bike.getY()] = '*';
+		mapa[bike.getX()][bike.getY()] = '+';
 	}
 }
 
@@ -142,40 +142,40 @@ void Mundo::printMundo()
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
-		cout << "    ";
+		cout << "      ";
 
 		for (int j = 0; j < tamanho_y; j++) 
 		{
 			if (mapa[i][j] == '0')
 			{
 				// determina cor do texto no console, e imprime char
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), GREEN);
-				cout << mapa[i][j] << " ";
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLACK);
+				cout << mapa[i][j];
 			}
 			else if (mapa[i][j] == '2')
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
-				cout << mapa[i][j] << " ";
+				cout << mapa[i][j];
 			}
 			else if (mapa[i][j] == '%')
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLUE);
-				cout << mapa[i][j] << " ";
+				cout << mapa[i][j];
 			}
 			else if (mapa[i][j] == '@')
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
-				cout << mapa[i][j] << " ";
+				cout << mapa[i][j];
 			}
-			else if (mapa[i][j] == '*')
+			else if (mapa[i][j] == '+')
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), MAGENTA);
-				cout << mapa[i][j] << " ";
+				cout << mapa[i][j];
 			}
 			else
 			{
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), DARKGRAY);
-				cout << mapa[i][j] << " ";
+				cout << mapa[i][j];
 			}
 		}
 		cout << endl;
