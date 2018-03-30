@@ -1,5 +1,4 @@
 # Projeto-P1
 
-OS: apenas Windows
-
+OS: Windows 10
 IDE utilizada: Visual Studio 2017 Community
