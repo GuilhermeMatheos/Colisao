@@ -67,92 +67,120 @@ void Mundo::resetMap()
 }
 
 
-void Mundo::setVeiculos(Carro *car, Caminhao *truck, Moto *bike)
+void Mundo::setVeiculos(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
 {
 	// Determina posição dos veículos
+	int i;
 
-	if ((car->getX() > 0 && car->getX() < get_tamanho_x()-1) &&
-		(car->getY() > 0 && car->getY() < get_tamanho_y()-1))
+	for (i = 0; i < car.size(); i++)
 	{
-		map[car->getX()][car->getY()] = '%';
+		if ((car[i]->getX() > 0 && car[i]->getX() < get_tamanho_x() - 1) &&
+			(car[i]->getY() > 0 && car[i]->getY() < get_tamanho_y() - 1))
+		{
+			map[car[i]->getX()][car[i]->getY()] = '%';
+		}
 	}
 
-	if ((truck->getX() > 0 && truck->getX() < get_tamanho_x()-1) &&
-		(truck->getY() > 0 && truck->getY() < get_tamanho_y()-1))
+	for (i = 0; i < truck.size(); i++)
 	{
-		map[truck->getX()][truck->getY()] = '@';
+		if ((truck[i]->getX() > 0 && truck[i]->getX() < get_tamanho_x() - 1) &&
+			(truck[i]->getY() > 0 && truck[i]->getY() < get_tamanho_y() - 1))
+		{
+			map[truck[i]->getX()][truck[i]->getY()] = '@';
+		}
 	}
 
-	if ((bike->getX() > 0 && bike->getX() < get_tamanho_x()-1) &&
-		(bike->getY() > 0 && bike->getY() < get_tamanho_y()-1))
+	for (i = 0; i < bike.size(); i++)
 	{
-		map[bike->getX()][bike->getY()] = '+';
+		if ((bike[i]->getX() > 0 && bike[i]->getX() < get_tamanho_x() - 1) &&
+			(bike[i]->getY() > 0 && bike[i]->getY() < get_tamanho_y() - 1))
+		{
+			map[bike[i]->getX()][bike[i]->getY()] = '+';
+		}
 	}
 }
 
 
-void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
+void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
 {
-	car->move();
-	truck->move();
-	bike->move();
-
+	int i;
 
 	// carro
-	if (car->getX() <= 0)
+	for (i = 0; i < car.size(); i++)
 	{
-		car->setX(get_tamanho_x()-2);
-	}
-	else if (car->getX() >= get_tamanho_x()-1)
-	{
-		car->setX(1);
+		// movimenta
+		car[i]->move();
+
+		// ao colidir com parede aparece na borda oposta
+		if (car[i]->getX() <= 0)
+		{
+			car[i]->setX(get_tamanho_x() - 2);
+		}
+		else if (car[i]->getX() >= get_tamanho_x() - 1)
+		{
+			car[i]->setX(1);
+		}
+
+		if (car[i]->getY() <= 0)
+		{
+			car[i]->setY(get_tamanho_y() - 2);
+		}
+		else if (car[i]->getY() >= get_tamanho_y() - 1)
+		{
+			car[i]->setY(1);
+		}
 	}
 
-	if (car->getY() <= 0)
+	// caminhao
+	for (i = 0; i < truck.size(); i++)
 	{
-		car->setY(get_tamanho_y()-2);
-	}
-	else if (car->getY() >= get_tamanho_y()-1)
-	{
-		car->setY(1);
+		// movimenta
+		truck[i]->move();
+
+		// ao colidir com parede aparece na borda oposta
+		if (truck[i]->getX() <= 0)
+		{
+			truck[i]->setX(get_tamanho_x() - 2);
+		}
+		else if (truck[i]->getX() >= get_tamanho_x() - 1)
+		{
+			truck[i]->setX(1);
+		}
+
+		if (truck[i]->getY() <= 0)
+		{
+			truck[i]->setY(get_tamanho_y() - 2);
+		}
+		else if (truck[i]->getY() >= get_tamanho_y() - 1)
+		{
+			truck[i]->setY(1);
+		}
 	}
 
-	// caminhão
-	if (truck->getX() <= 0)
+	// moto
+	for (i = 0; i < bike.size(); i++)
 	{
-		truck->setX(get_tamanho_x()-2);
-	}
-	else if (truck->getX() >= get_tamanho_x()-1)
-	{
-		truck->setX(1);
-	}
+		// movimenta
+		bike[i]->move();
 
-	if (truck->getY() <= 0)
-	{
-		truck->setY(get_tamanho_y()-2);
-	}
-	else if (truck->getY() >= get_tamanho_y()-1)
-	{
-		truck->setY(1);
-	}
+		// ao colidir com parede aparece na borda oposta
+		if (bike[i]->getX() <= 0)
+		{
+			bike[i]->setX(get_tamanho_x() - 2);
+		}
+		else if (bike[i]->getX() >= get_tamanho_x() - 1)
+		{
+			bike[i]->setX(1);
+		}
 
-	// bike
-	if (bike->getX() <= 0)
-	{
-		bike->setX(get_tamanho_x()-2);
-	}
-	else if (bike->getX() >= get_tamanho_x()-1)
-	{
-		bike->setX(1);
-	}
-
-	if (bike->getY() <= 0)
-	{
-		bike->setY(get_tamanho_y()-2);
-	}
-	else if (bike->getY() >= get_tamanho_y()-1)
-	{
-		bike->setY(1);
+		if (bike[i]->getY() <= 0)
+		{
+			bike[i]->setY(get_tamanho_y() - 2);
+		}
+		else if (bike[i]->getY() >= get_tamanho_y() - 1)
+		{
+			bike[i]->setY(1);
+		}
 	}
 }
 
