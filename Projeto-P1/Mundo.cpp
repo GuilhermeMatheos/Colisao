@@ -189,10 +189,12 @@ void Mundo::printMundo()
 {
 	// desenha o mundo no console
 
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 	cout << "     Mundo    \n" << endl;
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
 		cout << "      ";
 
 		for (int j = 0; j < tamanho_y; j++)
@@ -227,9 +229,10 @@ void Mundo::printMundo()
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
-			else
+			else if (map[i][j] == '1')
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), DARKGRAY);
+				// rosa
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN);
 				cout << map[i][j];
 			}
 		}
