@@ -41,15 +41,15 @@ Mundo::~Mundo()
 
 int Mundo::get_tamanho_x()
 {
-	// retorma tamanho x sem incluir a borda
-	return tamanho_x-2;
+	// retorma tamanho x
+	return tamanho_x;
 }
 
 
 int Mundo::get_tamanho_y()
 {
-	// retorma tamanho y sem incluir a borda
-	return tamanho_y-2;
+	// retorma tamanho y
+	return tamanho_y;
 }
 
 
@@ -71,20 +71,20 @@ void Mundo::setVeiculos(Carro *car, Caminhao *truck, Moto *bike)
 {
 	// Determina posição dos veículos
 
-	if ((car->getX() >= 0 && car->getX() <= get_tamanho_x()) &&
-		(car->getY() >= 0 && car->getY() <= get_tamanho_y()))
+	if ((car->getX() > 0 && car->getX() < get_tamanho_x()-1) &&
+		(car->getY() > 0 && car->getY() < get_tamanho_y()-1))
 	{
 		map[car->getX()][car->getY()] = '%';
 	}
 
-	if ((truck->getX() >= 0 && truck->getX() <= get_tamanho_x()) &&
-		(truck->getY() >= 0 && truck->getY() <= get_tamanho_y()))
+	if ((truck->getX() > 0 && truck->getX() < get_tamanho_x()-1) &&
+		(truck->getY() > 0 && truck->getY() < get_tamanho_y()-1))
 	{
 		map[truck->getX()][truck->getY()] = '@';
 	}
 
-	if ((bike->getX() >= 0 && bike->getX() <= get_tamanho_x()) &&
-		(bike->getY() >= 0 && bike->getY() <= get_tamanho_y()))
+	if ((bike->getX() > 0 && bike->getX() < get_tamanho_x()-1) &&
+		(bike->getY() > 0 && bike->getY() < get_tamanho_y()-1))
 	{
 		map[bike->getX()][bike->getY()] = '+';
 	}
@@ -101,18 +101,18 @@ void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
 	// carro
 	if (car->getX() <= 0)
 	{
-		car->setX(get_tamanho_x());
+		car->setX(get_tamanho_x()-2);
 	}
-	else if (car->getX() >= get_tamanho_x())
+	else if (car->getX() >= get_tamanho_x()-1)
 	{
 		car->setX(1);
 	}
 
-	if (car->getY() >= get_tamanho_y())
+	if (car->getY() <= 0)
 	{
-		car->setY(get_tamanho_y());
+		car->setY(get_tamanho_y()-2);
 	}
-	else if (car->getY() >= get_tamanho_y())
+	else if (car->getY() >= get_tamanho_y()-1)
 	{
 		car->setY(1);
 	}
@@ -120,18 +120,18 @@ void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
 	// caminhão
 	if (truck->getX() <= 0)
 	{
-		truck->setX(get_tamanho_x());
+		truck->setX(get_tamanho_x()-2);
 	}
-	else if (truck->getX() >= get_tamanho_x())
+	else if (truck->getX() >= get_tamanho_x()-1)
 	{
 		truck->setX(1);
 	}
 
 	if (truck->getY() <= 0)
 	{
-		truck->setY(get_tamanho_y());
+		truck->setY(get_tamanho_y()-2);
 	}
-	else if (truck->getY() >= get_tamanho_y())
+	else if (truck->getY() >= get_tamanho_y()-1)
 	{
 		truck->setY(1);
 	}
@@ -139,18 +139,18 @@ void Mundo::movimenta(Carro *car, Caminhao *truck, Moto *bike)
 	// bike
 	if (bike->getX() <= 0)
 	{
-		bike->setX(get_tamanho_x());
+		bike->setX(get_tamanho_x()-2);
 	}
-	else if (bike->getX() >= get_tamanho_x())
+	else if (bike->getX() >= get_tamanho_x()-1)
 	{
 		bike->setX(1);
 	}
 
 	if (bike->getY() <= 0)
 	{
-		bike->setY(get_tamanho_y());
+		bike->setY(get_tamanho_y()-2);
 	}
-	else if (bike->getY() >= get_tamanho_y())
+	else if (bike->getY() >= get_tamanho_y()-1)
 	{
 		bike->setY(1);
 	}
