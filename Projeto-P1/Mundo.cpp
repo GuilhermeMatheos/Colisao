@@ -205,22 +205,26 @@ void Mundo::printMundo()
 			}
 			else if (map[i][j] == '2')
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+				// vermelho
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | BACKGROUND_RED);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '%')
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLUE);
+				// azul
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '@')
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), YELLOW);
+				// amarelo
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_GREEN);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '+')
 			{
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), MAGENTA);
+				// rosa
+				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
 			else
