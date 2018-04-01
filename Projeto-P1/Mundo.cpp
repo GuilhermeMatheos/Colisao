@@ -87,13 +87,13 @@ void Mundo::setVeiculos(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto
 void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
 {
 	int i;
-
+	
 	// carro
 	for (i = 0; i < car.size(); i++)
 	{
 		// movimenta
 		car[i]->move();
-
+		
 		// ao colidir com parede aparece na borda oposta
 		if (car[i]->getX() <= 0)
 		{
@@ -168,7 +168,7 @@ void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*>
 }
 
 
-void Mundo::printMundo()
+void Mundo::printMundo(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
 {
 	// desenha o mundo no console
 
@@ -192,7 +192,7 @@ void Mundo::printMundo()
 	Hardware hw = Hardware();
 
 	hw.changeColor(RED);
-	cout << "     Mundo    \n" << endl;
+	printf("     Carro: %d Caminhao: %d Moto: %d    \n", car.size(), truck.size(), bike.size());
 
 	for (int i = 0; i < tamanho_x; i++)
 	{

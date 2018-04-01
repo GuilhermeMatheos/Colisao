@@ -9,7 +9,7 @@ public:
 	void resetMap();
 	void setVeiculos(vector<Carro*>, vector<Caminhao*>, vector<Moto*>);
 	void movimenta(vector<Carro*>, vector<Caminhao*>, vector<Moto*>);
-	void printMundo();
+	void printMundo(vector<Carro*>, vector<Caminhao*>, vector<Moto*>);
 private:
 	int tamanho_x;
 	int tamanho_y;
