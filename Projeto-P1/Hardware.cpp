@@ -11,6 +11,7 @@ Hardware::~Hardware()
 {
 }
 
+
 void Hardware::init(int x, int y)
 {
 	/* Modifica parâmetros do prompt de comando (cmd):
@@ -34,11 +35,13 @@ void Hardware::init(int x, int y)
 	SetWindowLong(consoleWindow, GWL_STYLE, GetWindowLong(consoleWindow, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 }
 
+
 void Hardware::changeColor(int c)
 {
 	// determina cor do texto e background no console
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
+
 
 void Hardware::setCursorPosition(int x, int y)
 {
