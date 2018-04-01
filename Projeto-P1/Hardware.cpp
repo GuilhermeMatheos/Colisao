@@ -4,6 +4,10 @@
 
 Hardware::Hardware()
 {
+	x = 132;
+	y = 44;
+	w = 1090;
+	h = 745;
 }
 
 
@@ -12,14 +16,12 @@ Hardware::~Hardware()
 }
 
 
-void Hardware::init(int x, int y)
+void Hardware::init()
 {
 	/* Modifica parâmetros do prompt de comando (cmd):
 	tamanho do ScreenBuffer e da tela */
 
 	// tamanho tela
-	int w = 1090;
-	int h = 745;
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r); //stores the console's current dimensions
@@ -30,15 +32,8 @@ void Hardware::init(int x, int y)
 	coord.X = x;
 	coord.Y = y;
 
-	_SMALL_RECT Rect;
-	Rect.Top = 0;
-	Rect.Left = 0;
-	Rect.Bottom = x - 1;
-	Rect.Right = y - 1;
-
 	HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleScreenBufferSize(Handle, coord);
-	SetConsoleWindowInfo(Handle, TRUE, &Rect);
 
 	// impede que usuario redimensione o console
 	HWND consoleWindow = GetConsoleWindow();
