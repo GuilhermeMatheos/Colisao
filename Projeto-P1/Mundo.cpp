@@ -4,6 +4,7 @@
 #include "Moto.h"
 #include "Caminhao.h"
 #include "Mundo.h"
+#include "Hardware.h"
 
 #define BLACK			0
 #define BLUE			1
@@ -189,50 +190,52 @@ void Mundo::printMundo()
 {
 	// desenha o mundo no console
 
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+	Hardware hw = Hardware();
+
+	hw.changeColor(RED);
 	cout << "     Mundo    \n" << endl;
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
-		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), RED);
+		hw.changeColor(RED);
 		cout << "      ";
 
 		for (int j = 0; j < tamanho_y; j++)
 		{
 			if (map[i][j] == '0')
 			{
-				// determina cor do texto no console, e imprime char
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BLACK);
+				// preto
+				hw.changeColor(BLACK);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '2')
 			{
-				// vermelho
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | BACKGROUND_RED);
+				// vermelho com fundo vermelho
+				hw.changeColor(FOREGROUND_RED | BACKGROUND_RED);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '%')
 			{
-				// azul
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_BLUE | BACKGROUND_BLUE);
+				// azul com fundo azul
+				hw.changeColor(FOREGROUND_BLUE | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '@')
 			{
-				// amarelo
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_GREEN);
+				// amarelo com fundo amarelo
+				hw.changeColor(FOREGROUND_RED | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_GREEN);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '+')
 			{
-				// rosa
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_BLUE);
+				// rosa com fundo rosa
+				hw.changeColor(FOREGROUND_RED | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '1')
 			{
-				// rosa
-				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_GREEN);
+				// branco com fundo branco
+				hw.changeColor(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE);
 				cout << map[i][j];
 			}
 		}

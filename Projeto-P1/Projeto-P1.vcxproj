@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Caminhao.h" />
     <ClInclude Include="Carro.h" />
+    <ClInclude Include="Hardware.h" />
     <ClInclude Include="Moto.h" />
     <ClInclude Include="Mundo.h" />
     <ClInclude Include="Random.h" />
@@ -159,6 +160,7 @@
   <ItemGroup>
     <ClCompile Include="Caminhao.cpp" />
     <ClCompile Include="Carro.cpp" />
+    <ClCompile Include="Hardware.cpp" />
     <ClCompile Include="Moto.cpp" />
     <ClCompile Include="Mundo.cpp" />
     <ClCompile Include="Projeto-P1.cpp" />
