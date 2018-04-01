@@ -16,6 +16,16 @@ void Hardware::init(int x, int y)
 {
 	/* Modifica parâmetros do prompt de comando (cmd):
 	tamanho do ScreenBuffer e da tela */
+
+	// tamanho tela
+	int w = 1090;
+	int h = 745;
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r); //stores the console's current dimensions
+	MoveWindow(console, r.left, r.top, w, h, TRUE); // w width, h height
+
+	// screen buffer
 	COORD coord;
 	coord.X = x;
 	coord.Y = y;
