@@ -39,3 +39,15 @@ void Hardware::changeColor(int c)
 	// determina cor do texto e background no console
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
+
+void Hardware::setCursorPosition(int x, int y)
+{
+	/* Determina posição do cursor
+	x é coluna, y é linha. A origem (0,0)
+	é o canto superior esquerdo.	*/
+
+	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	std::cout.flush();
+	COORD coord = { (SHORT)x, (SHORT)y };
+	SetConsoleCursorPosition(hOut, coord);
+}

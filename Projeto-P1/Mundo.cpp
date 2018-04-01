@@ -6,29 +6,11 @@
 #include "Mundo.h"
 #include "Hardware.h"
 
-#define BLACK			0
-#define BLUE			1
-#define GREEN			2
-#define CYAN			3
-#define RED				4
-#define MAGENTA			5
-#define BROWN			6
-#define LIGHTGRAY		7
-#define DARKGRAY		8
-#define LIGHTBLUE		9
-#define LIGHTGREEN		10
-#define LIGHTCYAN		11
-#define LIGHTRED		12
-#define LIGHTMAGENTA	13
-#define YELLOW			14
-#define WHITE			15
-
 
 Mundo::Mundo()
 {
 	/*	Cria um mapa padrão com 40 linhas e 120 colunas
 		e obstáculos	*/
-
 	tamanho_x = 40;
 	tamanho_y = 120;
 	setMundo();
@@ -57,7 +39,6 @@ int Mundo::get_tamanho_y()
 void Mundo::resetMap()
 {
 	// reseta o mundo
-
 	for (int i = 0; i < tamanho_x; i++)
 	{
 		for (int j = 0; j < tamanho_y; j++)
@@ -71,6 +52,7 @@ void Mundo::resetMap()
 void Mundo::setVeiculos(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
 {
 	// Determina posição dos veículos
+
 	int i;
 
 	for (i = 0; i < car.size(); i++)
@@ -190,6 +172,23 @@ void Mundo::printMundo()
 {
 	// desenha o mundo no console
 
+	#define BLACK			0
+	#define BLUE			1
+	#define GREEN			2
+	#define CYAN			3
+	#define RED				4
+	#define MAGENTA			5
+	#define BROWN			6
+	#define LIGHTGRAY		7
+	#define DARKGRAY		8
+	#define LIGHTBLUE		9
+	#define LIGHTGREEN		10
+	#define LIGHTCYAN		11
+	#define LIGHTRED		12
+	#define LIGHTMAGENTA	13
+	#define YELLOW			14
+	#define WHITE			15
+
 	Hardware hw = Hardware();
 
 	hw.changeColor(RED);
@@ -243,7 +242,7 @@ void Mundo::printMundo()
 	}
 
 	// retorna cursor para poisção inicial
-	setCursorPosition(0, 0);
+	hw.setCursorPosition(0, 0);
 }
 
 
@@ -315,17 +314,4 @@ void Mundo::setObstaculo(int x, int y, int w, int h)
 			}
 		}
 	}
-}
-
-
-void Mundo::setCursorPosition(int x, int y)
-{
-	/* Determina posição do cursor 
-	   x é coluna, y é linha. A origem (0,0) 
-	   é o canto superior esquerdo.	*/
-	
-	static const HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	std::cout.flush();
-	COORD coord = { (SHORT)x, (SHORT)y };
-	SetConsoleCursorPosition(hOut, coord);
 }

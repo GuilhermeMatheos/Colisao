@@ -6,5 +6,6 @@ public:
 	~Hardware();
 	void init(int, int);
 	void changeColor(int);
+	void setCursorPosition(int, int);
 };
 

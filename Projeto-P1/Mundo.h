@@ -17,6 +17,5 @@ private:
 	char defaultMap[40][120];
 	void setMundo();
 	void setObstaculo(int, int, int, int);
-	void setCursorPosition(int, int);
 };
 
