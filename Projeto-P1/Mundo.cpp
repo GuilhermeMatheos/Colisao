@@ -49,7 +49,7 @@ void Mundo::resetMap()
 }
 
 
-void Mundo::setVeiculos(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
+void Mundo::setVeiculos(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
 {
 	// Determina posição dos veículos
 
@@ -57,34 +57,34 @@ void Mundo::setVeiculos(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto
 
 	for (i = 0; i < car.size(); i++)
 	{
-		if ((car[i]->getX() > 0 && car[i]->getX() < get_tamanho_x() - 1) &&
-			(car[i]->getY() > 0 && car[i]->getY() < get_tamanho_y() - 1))
+		if ((car[i].getX() > 0 && car[i].getX() < get_tamanho_x() - 1) &&
+			(car[i].getY() > 0 && car[i].getY() < get_tamanho_y() - 1))
 		{
-			map[car[i]->getX()][car[i]->getY()] = '%';
+			map[car[i].getX()][car[i].getY()] = '%';
 		}
 	}
 
 	for (i = 0; i < truck.size(); i++)
 	{
-		if ((truck[i]->getX() > 0 && truck[i]->getX() < get_tamanho_x() - 1) &&
-			(truck[i]->getY() > 0 && truck[i]->getY() < get_tamanho_y() - 1))
+		if ((truck[i].getX() > 0 && truck[i].getX() < get_tamanho_x() - 1) &&
+			(truck[i].getY() > 0 && truck[i].getY() < get_tamanho_y() - 1))
 		{
-			map[truck[i]->getX()][truck[i]->getY()] = '@';
+			map[truck[i].getX()][truck[i].getY()] = '@';
 		}
 	}
 
 	for (i = 0; i < bike.size(); i++)
 	{
-		if ((bike[i]->getX() > 0 && bike[i]->getX() < get_tamanho_x() - 1) &&
-			(bike[i]->getY() > 0 && bike[i]->getY() < get_tamanho_y() - 1))
+		if ((bike[i].getX() > 0 && bike[i].getX() < get_tamanho_x() - 1) &&
+			(bike[i].getY() > 0 && bike[i].getY() < get_tamanho_y() - 1))
 		{
-			map[bike[i]->getX()][bike[i]->getY()] = '+';
+			map[bike[i].getX()][bike[i].getY()] = '+';
 		}
 	}
 }
 
 
-void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
+void Mundo::movimenta(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
 {
 	int i;
 	
@@ -92,25 +92,25 @@ void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*>
 	for (i = 0; i < car.size(); i++)
 	{
 		// movimenta
-		car[i]->move();
+		car[i].move();
 		
 		// ao colidir com parede aparece na borda oposta
-		if (car[i]->getX() <= 0)
+		if (car[i].getX() <= 0)
 		{
-			car[i]->setX(get_tamanho_x() - 2);
+			car[i].setX(get_tamanho_x() - 2);
 		}
-		else if (car[i]->getX() >= get_tamanho_x() - 1)
+		else if (car[i].getX() >= get_tamanho_x() - 1)
 		{
-			car[i]->setX(1);
+			car[i].setX(1);
 		}
 
-		if (car[i]->getY() <= 0)
+		if (car[i].getY() <= 0)
 		{
-			car[i]->setY(get_tamanho_y() - 2);
+			car[i].setY(get_tamanho_y() - 2);
 		}
-		else if (car[i]->getY() >= get_tamanho_y() - 1)
+		else if (car[i].getY() >= get_tamanho_y() - 1)
 		{
-			car[i]->setY(1);
+			car[i].setY(1);
 		}
 	}
 
@@ -118,25 +118,25 @@ void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*>
 	for (i = 0; i < truck.size(); i++)
 	{
 		// movimenta
-		truck[i]->move();
+		truck[i].move();
 
 		// ao colidir com parede aparece na borda oposta
-		if (truck[i]->getX() <= 0)
+		if (truck[i].getX() <= 0)
 		{
-			truck[i]->setX(get_tamanho_x() - 2);
+			truck[i].setX(get_tamanho_x() - 2);
 		}
-		else if (truck[i]->getX() >= get_tamanho_x() - 1)
+		else if (truck[i].getX() >= get_tamanho_x() - 1)
 		{
-			truck[i]->setX(1);
+			truck[i].setX(1);
 		}
 
-		if (truck[i]->getY() <= 0)
+		if (truck[i].getY() <= 0)
 		{
-			truck[i]->setY(get_tamanho_y() - 2);
+			truck[i].setY(get_tamanho_y() - 2);
 		}
-		else if (truck[i]->getY() >= get_tamanho_y() - 1)
+		else if (truck[i].getY() >= get_tamanho_y() - 1)
 		{
-			truck[i]->setY(1);
+			truck[i].setY(1);
 		}
 	}
 
@@ -144,31 +144,37 @@ void Mundo::movimenta(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*>
 	for (i = 0; i < bike.size(); i++)
 	{
 		// movimenta
-		bike[i]->move();
+		bike[i].move();
 
 		// ao colidir com parede aparece na borda oposta
-		if (bike[i]->getX() <= 0)
+		if (bike[i].getX() <= 0)
 		{
-			bike[i]->setX(get_tamanho_x() - 2);
+			bike[i].setX(get_tamanho_x() - 2);
 		}
-		else if (bike[i]->getX() >= get_tamanho_x() - 1)
+		else if (bike[i].getX() >= get_tamanho_x() - 1)
 		{
-			bike[i]->setX(1);
+			bike[i].setX(1);
 		}
 
-		if (bike[i]->getY() <= 0)
+		if (bike[i].getY() <= 0)
 		{
-			bike[i]->setY(get_tamanho_y() - 2);
+			bike[i].setY(get_tamanho_y() - 2);
 		}
-		else if (bike[i]->getY() >= get_tamanho_y() - 1)
+		else if (bike[i].getY() >= get_tamanho_y() - 1)
 		{
-			bike[i]->setY(1);
+			bike[i].setY(1);
 		}
 	}
 }
 
 
-void Mundo::printMundo(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*> bike)
+void Mundo::colisao(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
+{
+	car.pop_back();
+}
+
+
+void Mundo::printMundo(int car_size, int truck_size, int bike_size)
 {
 	// desenha o mundo no console
 
@@ -192,7 +198,7 @@ void Mundo::printMundo(vector<Carro*> car, vector<Caminhao*> truck, vector<Moto*
 	Hardware hw = Hardware();
 
 	hw.changeColor(RED);
-	printf("     Carro: %d Caminhao: %d Moto: %d    \n", car.size(), truck.size(), bike.size());
+	printf("     Carro: %d Caminhao: %d Moto: %d    \n", car_size, truck_size, bike_size);
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
