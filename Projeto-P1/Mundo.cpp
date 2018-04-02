@@ -170,7 +170,111 @@ void Mundo::movimenta(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> 
 
 void Mundo::colisao(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
 {
-	car.pop_back();
+	int i;
+	int j;
+
+	vector<Carro> copy_car = car;
+	vector<Caminhao> copy_truck = truck;
+	vector<Moto>copy_bike = bike;
+
+	// bike com carro
+endloop:
+	for (i = 0; i < bike.size(); i++)
+	{
+		for (j = 0; j < car.size(); j++)
+		{
+			if (bike[i].getX() == car[j].getY() &&
+				bike[i].getY() == car[j].getY())
+			{
+				bike.erase(bike.begin() + (i));
+				goto endloop;
+			}
+		}
+	}
+	// bike com truck
+endloop1:
+	for (i = 0; i < bike.size(); i++)
+	{
+		for (j = 0; j < truck.size(); j++)
+		{
+			if (bike[i].getX() == truck[j].getY() &&
+				bike[i].getY() == truck[j].getY())
+			{
+				bike.erase(bike.begin() + (i));
+				goto endloop1;
+			}
+		}
+	}
+	// bike com bike
+endloop2:
+	for (i = 0; i < bike.size(); i++)
+	{
+		for (j = 0; j < copy_bike.size(); j++)
+		{
+			if (bike[i].getX() == copy_bike[j].getY() &&
+				bike[i].getY() == copy_bike[j].getY())
+			{
+				bike.erase(bike.begin() + (i));
+				goto endloop2;
+			}
+		}
+	}
+	// car com bike
+endloop3:
+	for (i = 0; i < car.size(); i++)
+	{
+		for (j = 0; j < bike.size(); j++)
+		{
+			if (car[i].getX() == bike[j].getY() &&
+				car[i].getY() == bike[j].getY())
+			{
+				bike.erase(bike.begin() + (j));
+				goto endloop3;
+			}
+		}
+	}
+	// car com truck
+endloop4:
+	for (i = 0; i < car.size(); i++)
+	{
+		for (j = 0; j < truck.size(); j++)
+		{
+			if (car[i].getX() == truck[j].getY() &&
+				car[i].getY() == truck[j].getY())
+			{
+				car.erase(car.begin() + (i));
+				goto endloop4;
+			}
+		}
+	}
+	// car com car
+endloop5:
+	for (i = 0; i < car.size(); i++)
+	{
+		for (j = 0; j < copy_car.size(); j++)
+		{
+			if (car[i].getX() == copy_car[j].getY() &&
+				car[i].getY() == copy_car[j].getY())
+			{
+				car.erase(car.begin() + (i));
+				goto endloop5;
+			}
+		}
+	}
+	// truck com truck
+endloop6:
+	for (i = 0; i < truck.size(); i++)
+	{
+		for (j = 0; j < copy_truck.size(); j++)
+		{
+			if (truck[i].getX() == copy_truck[j].getY() &&
+				truck[i].getY() == copy_truck[j].getY())
+			{
+				truck.erase(truck.begin() + (i));
+				goto endloop6;
+			}
+		}
+	}
 }
 
 
