@@ -10,6 +10,7 @@ public:
 	void setVeiculos(vector<Carro>&, vector<Caminhao>&, vector<Moto>&);
 	void movimenta(vector<Carro>&, vector<Caminhao>&, vector<Moto>&);
 	void colisao(vector<Carro>&, vector<Caminhao>&, vector<Moto>&);
+	void fabricaVeiculo(vector<Carro>&, vector<Caminhao>&, vector<Moto>&);
 	void printMundo(int, int, int);
 private:
 	int tamanho_x;

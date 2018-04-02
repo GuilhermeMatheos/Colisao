@@ -278,6 +278,13 @@ endloop6:
 }
 
 
+void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
+{
+	// fabrica novo veículo caso esteja na zona de fábrica (2)
+
+}
+
+
 void Mundo::printMundo(int car_size, int truck_size, int bike_size)
 {
 	// desenha o mundo no console
