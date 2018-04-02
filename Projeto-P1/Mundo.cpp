@@ -282,76 +282,74 @@ void Mundo::printMundo(int car_size, int truck_size, int bike_size)
 {
 	// desenha o mundo no console
 
-	#define BLACK			0
-	#define BLUE			1
-	#define GREEN			2
-	#define CYAN			3
-	#define RED				4
-	#define MAGENTA			5
-	#define BROWN			6
-	#define LIGHTGRAY		7
-	#define DARKGRAY		8
-	#define LIGHTBLUE		9
-	#define LIGHTGREEN		10
-	#define LIGHTCYAN		11
-	#define LIGHTRED		12
-	#define LIGHTMAGENTA	13
-	#define YELLOW			14
-	#define WHITE			15
+	// letras
+	#define BLACK 0
+	#define LETRA_VERMELHA FOREGROUND_RED
+	#define LETRA_AZUL FOREGROUND_BLUE
+	#define LETRA_AMARELA FOREGROUND_RED | FOREGROUND_GREEN 
+	#define LETRA_ROSA FOREGROUND_RED | FOREGROUND_BLUE
+	#define LETRA_BRANCA FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE
+	// background
+	#define FUNDO_VERMELHO BACKGROUND_RED
+	#define FUNDO_AZUL BACKGROUND_BLUE
+	#define FUNDO_AMARELO BACKGROUND_RED | BACKGROUND_GREEN
+	#define FUNDO_ROSA BACKGROUND_RED | BACKGROUND_BLUE
+	#define FUNDO_BRANCO BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE
+
 
 	Hardware hw = Hardware();
 
-	hw.changeColor(RED);
-	printf("     Carro: %d Caminhao: %d Moto: %d    \n", car_size, truck_size, bike_size);
+	hw.changeColor(BLACK);
+	printf("      ");
+	hw.changeColor(LETRA_AZUL | FUNDO_BRANCO);
+	printf(" Carro: %d ", car_size);
+	hw.changeColor(LETRA_AMARELA | FUNDO_BRANCO);
+	printf("Caminhao: %d ", truck_size);
+	hw.changeColor(LETRA_ROSA | FUNDO_BRANCO);
+	printf("Moto: %d \n", bike_size);
 
 	for (int i = 0; i < tamanho_x; i++)
 	{
-		hw.changeColor(RED);
+		hw.changeColor(BLACK);
 		cout << "      ";
 
 		for (int j = 0; j < tamanho_y; j++)
 		{
 			if (map[i][j] == '0')
 			{
-				// preto
 				hw.changeColor(BLACK);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '2')
 			{
-				// vermelho com fundo vermelho
-				hw.changeColor(FOREGROUND_RED | BACKGROUND_RED);
+				hw.changeColor(LETRA_VERMELHA | FUNDO_VERMELHO);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '%')
 			{
-				// azul com fundo azul
-				hw.changeColor(FOREGROUND_BLUE | BACKGROUND_BLUE);
+				hw.changeColor(LETRA_AZUL | FUNDO_AZUL);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '@')
 			{
-				// amarelo com fundo amarelo
-				hw.changeColor(FOREGROUND_RED | FOREGROUND_GREEN | BACKGROUND_RED | BACKGROUND_GREEN);
+				hw.changeColor(LETRA_AMARELA | FUNDO_AMARELO);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '+')
 			{
-				// rosa com fundo rosa
-				hw.changeColor(FOREGROUND_RED | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_BLUE);
+				hw.changeColor(LETRA_ROSA | FUNDO_ROSA);
 				cout << map[i][j];
 			}
 			else if (map[i][j] == '1')
 			{
-				// branco com fundo branco
-				hw.changeColor(FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE | BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE);
+				hw.changeColor(LETRA_BRANCA | FUNDO_BRANCO);
 				cout << map[i][j];
 			}
 		}
 		cout << endl;
 	}
 
-	// retorna cursor para poisção inicial
+	// retorna cursor para posição inicial
 	hw.setCursorPosition(0, 0);
 }
 
@@ -390,7 +388,7 @@ void Mundo::setMundo()
 	setObstaculo(5, 98, 5, 10);
 	setObstaculo(30, 12, 5, 10);
 	setObstaculo(30, 98, 5, 10);
-	setObstaculo(16, 50, 6, 18);
+	setObstaculo(16, 55, 6, 12);
 
 	// copia para defaultMap
 	for (i = 0; i < tamanho_x; i++)
