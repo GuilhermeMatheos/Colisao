@@ -17,7 +17,9 @@ private:
 	int tamanho_y;
 	char map[40][120];
 	char defaultMap[40][120];
+	vector<vector <int>> posObstaculo;
 	void setMundo();
 	void setObstaculo(int, int, int, int);
+	void set_pos_obstaculo();
 };
 

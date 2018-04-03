@@ -281,7 +281,29 @@ endloop6:
 void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
 {
 	// fabrica novo veículo caso esteja na zona de fábrica (2)
+	int k, i;
+	int novo;
 
+	// carro
+	novo = 0;
+
+	for (k = 0; k < car.size(); k++)
+	{
+		for (i = 0; i < posObstaculo[0].size(); i++)
+		{
+			if (car[k].getX() == posObstaculo[0][i] &&
+				car[k].getY() == posObstaculo[1][i])
+			{
+				novo++;
+			}
+		}
+	}
+
+	for (i = 0; i < novo; i++)
+	{
+		Carro c = Carro(tamanho_x, tamanho_y);
+		car.push_back(c);
+	}
 }
 
 
@@ -403,6 +425,28 @@ void Mundo::setMundo()
 		for (j = 0; j < tamanho_y; j++)
 		{
 			defaultMap[i][j] = map[i][j];
+		}
+	}
+
+	// salva x,y dos obstáculos
+	set_pos_obstaculo();
+}
+
+void Mundo::set_pos_obstaculo()
+{
+	for (int i = 0; i < 2; i++) {
+		posObstaculo.push_back(vector<int>());	// Add an empty row
+	}
+
+	for (int i = 0; i < tamanho_x; i++)
+	{
+		for (int j = 0; j < tamanho_y; j++)
+		{
+			if (defaultMap[i][j] == '2')
+			{
+				posObstaculo[0].push_back(i);	// adiciona posição na primeira linha
+				posObstaculo[1].push_back(j);	// adiciona posição na segunda linha
+			}
 		}
 	}
 }

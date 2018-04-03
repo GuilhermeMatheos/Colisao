@@ -38,6 +38,11 @@ int Veiculos::getV()
 	return v;
 }
 
+int Veiculos::getFabrica()
+{
+	return fabrica;
+}
+
 
 void Veiculos::setX(int x)
 {
@@ -54,6 +59,12 @@ void Veiculos::setY(int y)
 void Veiculos::setVelocidade(int v)
 {
 	this->v = v;
+}
+
+
+void Veiculos::setFabrica(bool b)
+{
+	fabrica = b;
 }
 
 
