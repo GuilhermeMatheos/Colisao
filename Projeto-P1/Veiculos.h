@@ -11,12 +11,13 @@ public:
 	void setX(int x);
 	void setY(int y);
 	void setVelocidade(int v);
-	void setFabrica(bool);
+	void setFabrica(int);
 	void move();
 protected:
 	int x;
 	int y;
 	int v;
+	int num;
 	bool fabrica;
 	string cor;
 };

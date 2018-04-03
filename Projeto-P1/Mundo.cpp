@@ -280,13 +280,12 @@ endloop6:
 
 void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto> &bike)
 {
-	// fabrica novo veículo caso esteja na zona de fábrica (2)
+	/* fabrica novo veículo caso este passe
+	   pela zona de fábrica (2) */
 	int k, i;
 	int novo;
 
-	// carro
-	novo = 0;
-
+	// car
 	for (k = 0; k < car.size(); k++)
 	{
 		for (i = 0; i < posObstaculo[0].size(); i++)
@@ -294,15 +293,77 @@ void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<M
 			if (car[k].getX() == posObstaculo[0][i] &&
 				car[k].getY() == posObstaculo[1][i])
 			{
-				novo++;
+				car[k].setFabrica(car[k].getFabrica() + 1);
+			}
+			else if (car[k].getX() != posObstaculo[0][i] &&
+				car[k].getY() != posObstaculo[1][i])
+			{
+				car[k].setFabrica(0);
 			}
 		}
 	}
 
-	for (i = 0; i < novo; i++)
+	for (k = 0; k < car.size(); k++)
 	{
-		Carro c = Carro(tamanho_x, tamanho_y);
-		car.push_back(c);
+		if (car[k].getFabrica() == 1)
+		{
+			Carro c = Carro(tamanho_x, tamanho_y);
+			car.push_back(c);
+		}
+	}
+
+	// truck
+	for (k = 0; k < truck.size(); k++)
+	{
+		for (i = 0; i < posObstaculo[0].size(); i++)
+		{
+			if (truck[k].getX() == posObstaculo[0][i] &&
+				truck[k].getY() == posObstaculo[1][i])
+			{
+				truck[k].setFabrica(truck[k].getFabrica() + 1);
+			}
+			else if (truck[k].getX() != posObstaculo[0][i] &&
+				truck[k].getY() != posObstaculo[1][i])
+			{
+				truck[k].setFabrica(0);
+			}
+		}
+	}
+
+	for (k = 0; k < truck.size(); k++)
+	{
+		if (truck[k].getFabrica() == 1)
+		{
+			Caminhao c = Caminhao(tamanho_x, tamanho_y);
+			truck.push_back(c);
+		}
+	}
+
+	// bike
+	for (k = 0; k < bike.size(); k++)
+	{
+		for (i = 0; i < posObstaculo[0].size(); i++)
+		{
+			if (bike[k].getX() == posObstaculo[0][i] &&
+				bike[k].getY() == posObstaculo[1][i])
+			{
+				bike[k].setFabrica(bike[k].getFabrica() + 1);
+			}
+			else if (bike[k].getX() != posObstaculo[0][i] &&
+				bike[k].getY() != posObstaculo[1][i])
+			{
+				bike[k].setFabrica(0);
+			}
+		}
+	}
+
+	for (k = 0; k < bike.size(); k++)
+	{
+		if (bike[k].getFabrica() == 1)
+		{
+			Moto c = Moto(tamanho_x, tamanho_y);
+			bike.push_back(c);
+		}
 	}
 }
 
@@ -431,6 +492,7 @@ void Mundo::setMundo()
 	// salva x,y dos obstáculos
 	set_pos_obstaculo();
 }
+
 
 void Mundo::set_pos_obstaculo()
 {

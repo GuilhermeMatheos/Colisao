@@ -13,6 +13,7 @@ Veiculos::Veiculos(int tamanho_x, int tamanho_y)
 
 	v = 0;
 	fabrica = false;
+	num = 0;
 }
 
 
@@ -62,9 +63,9 @@ void Veiculos::setVelocidade(int v)
 }
 
 
-void Veiculos::setFabrica(bool b)
+void Veiculos::setFabrica(int num)
 {
-	fabrica = b;
+	this->num = num;
 }
 
 
