@@ -294,18 +294,13 @@ void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<M
 				car[k].getY() >= posObstaculo[i].y && car[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
 				car[k].getFabrica())
 			{
+				car[k].setFabrica(false);
 				Carro c = Carro(tamanho_x, tamanho_y);
 				car.push_back(c);
-				car[k].setFabrica(false);
-			}
-			if (car[k].getX() < posObstaculo[i].x && car[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
-				car[k].getY() < posObstaculo[i].y && car[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
-			{
-				car[k].setFabrica(true);
 			}
 		}
 	}
-
+	
 	// truck
 	for (k = 0; k < truck.size(); k++)
 	{
@@ -315,14 +310,9 @@ void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<M
 				truck[k].getY() >= posObstaculo[i].y && truck[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
 				truck[k].getFabrica())
 			{
+				truck[k].setFabrica(false);
 				Caminhao c = Caminhao(tamanho_x, tamanho_y);
 				truck.push_back(c);
-				truck[k].setFabrica(false);
-			}
-			if (truck[k].getX() < posObstaculo[i].x && truck[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
-				truck[k].getY() < posObstaculo[i].y && truck[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
-			{
-				truck[k].setFabrica(true);
 			}
 		}
 	}
@@ -336,14 +326,9 @@ void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<M
 				bike[k].getY() >= posObstaculo[i].y && bike[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
 				bike[k].getFabrica())
 			{
+				bike[k].setFabrica(false);
 				Moto c = Moto(tamanho_x, tamanho_y);
 				bike.push_back(c);
-				bike[k].setFabrica(false);
-			}
-			if (bike[k].getX() < posObstaculo[i].x && bike[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
-				bike[k].getY() < posObstaculo[i].y && bike[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
-			{
-				bike[k].setFabrica(true);
 			}
 		}
 	}
