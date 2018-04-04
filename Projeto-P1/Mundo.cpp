@@ -58,29 +58,17 @@ void Mundo::setVeiculos(vector<Carro> &car, vector<Caminhao> &truck, vector<Moto
 
 	for (i = 0; i < car.size(); i++)
 	{
-		if ((car[i].getX() > 0 && car[i].getX() < get_tamanho_x() - 1) &&
-			(car[i].getY() > 0 && car[i].getY() < get_tamanho_y() - 1))
-		{
-			map[car[i].getX()][car[i].getY()] = '%';
-		}
+		map[car[i].getX()][car[i].getY()] = '%';
 	}
 
 	for (i = 0; i < truck.size(); i++)
 	{
-		if ((truck[i].getX() > 0 && truck[i].getX() < get_tamanho_x() - 1) &&
-			(truck[i].getY() > 0 && truck[i].getY() < get_tamanho_y() - 1))
-		{
-			map[truck[i].getX()][truck[i].getY()] = '@';
-		}
+		map[truck[i].getX()][truck[i].getY()] = '@';
 	}
 
 	for (i = 0; i < bike.size(); i++)
 	{
-		if ((bike[i].getX() > 0 && bike[i].getX() < get_tamanho_x() - 1) &&
-			(bike[i].getY() > 0 && bike[i].getY() < get_tamanho_y() - 1))
-		{
-			map[bike[i].getX()][bike[i].getY()] = '+';
-		}
+		map[bike[i].getX()][bike[i].getY()] = '+';
 	}
 }
 

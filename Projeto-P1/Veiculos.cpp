@@ -8,8 +8,8 @@ Veiculos::Veiculos(int tamanho_x, int tamanho_y)
 	/* cria o veículo com posicao (x,y) aleatória
 	*/
 	Random rnd = Random();
-	x = rnd.generate(1, tamanho_x);
-	y = rnd.generate(1, tamanho_y);
+	x = rnd.generate(1, tamanho_x-2);
+	y = rnd.generate(1, tamanho_y-2);
 
 	v = 0;
 	num = 0;
