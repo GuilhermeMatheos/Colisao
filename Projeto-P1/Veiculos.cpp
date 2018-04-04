@@ -13,6 +13,7 @@ Veiculos::Veiculos(int tamanho_x, int tamanho_y)
 
 	v = 0;
 	num = 0;
+	fabrica = true;
 }
 
 
@@ -38,6 +39,16 @@ int Veiculos::getV()
 	return v;
 }
 
+bool Veiculos::getFabrica()
+{
+	return fabrica;
+}
+
+
+void Veiculos::setFabrica(bool f)
+{
+	fabrica = f;
+}
 
 void Veiculos::setX(int x)
 {

@@ -7,6 +7,8 @@ public:
 	int getX();
 	int getY();
 	int getV();
+	bool getFabrica();
+	void setFabrica(bool);
 	void setX(int x);
 	void setY(int y);
 	void setVelocidade(int v);
@@ -17,5 +19,6 @@ protected:
 	int v;
 	int num;
 	string cor;
+	bool fabrica;
 };
 

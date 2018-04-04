@@ -17,9 +17,15 @@ private:
 	int tamanho_y;
 	char map[40][120];
 	char defaultMap[40][120];
-	vector<vector <int>> posObstaculo;
+	struct rect {
+		int x;
+		int y;
+		int w;
+		int h;
+	};
+	vector<rect> posObstaculo;
+	int numObstaculo;
 	void setMundo();
 	void setObstaculo(int, int, int, int);
-	void set_pos_obstaculo();
 };
 

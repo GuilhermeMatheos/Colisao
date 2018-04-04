@@ -13,6 +13,7 @@ Mundo::Mundo()
 		e obstáculos	*/
 	tamanho_x = 40;
 	tamanho_y = 120;
+	numObstaculo = 0;
 	setMundo();
 }
 
@@ -282,7 +283,153 @@ void Mundo::fabricaVeiculo(vector<Carro> &car, vector<Caminhao> &truck, vector<M
 {
 	/* fabrica novo veículo caso este passe
 	   pela zona de fábrica (2) */
+	int k, i;
+	
+	// car
+	for (k = 0; k < car.size(); k++)
+	{
+		for (i = 0; i < posObstaculo.size(); i++)
+		{
+			if (car[k].getX() >= posObstaculo[i].x && car[k].getX() < (posObstaculo[i].x + posObstaculo[i].w) &&
+				car[k].getY() >= posObstaculo[i].y && car[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
+				car[k].getFabrica())
+			{
+				Carro c = Carro(tamanho_x, tamanho_y);
+				car.push_back(c);
+				car[k].setFabrica(false);
+			}
+			if (car[k].getX() < posObstaculo[i].x && car[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
+				car[k].getY() < posObstaculo[i].y && car[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
+			{
+				car[k].setFabrica(true);
+			}
+		}
+	}
 
+	// truck
+	for (k = 0; k < truck.size(); k++)
+	{
+		for (i = 0; i < posObstaculo.size(); i++)
+		{
+			if (truck[k].getX() >= posObstaculo[i].x && truck[k].getX() < (posObstaculo[i].x + posObstaculo[i].w) &&
+				truck[k].getY() >= posObstaculo[i].y && truck[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
+				truck[k].getFabrica())
+			{
+				Caminhao c = Caminhao(tamanho_x, tamanho_y);
+				truck.push_back(c);
+				truck[k].setFabrica(false);
+			}
+			if (truck[k].getX() < posObstaculo[i].x && truck[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
+				truck[k].getY() < posObstaculo[i].y && truck[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
+			{
+				truck[k].setFabrica(true);
+			}
+		}
+	}
+
+	// bike
+	for (k = 0; k < bike.size(); k++)
+	{
+		for (i = 0; i < posObstaculo.size(); i++)
+		{
+			if (bike[k].getX() >= posObstaculo[i].x && bike[k].getX() < (posObstaculo[i].x + posObstaculo[i].w) &&
+				bike[k].getY() >= posObstaculo[i].y && bike[k].getY() < (posObstaculo[i].y + posObstaculo[i].h) &&
+				bike[k].getFabrica())
+			{
+				Moto c = Moto(tamanho_x, tamanho_y);
+				bike.push_back(c);
+				bike[k].setFabrica(false);
+			}
+			if (bike[k].getX() < posObstaculo[i].x && bike[k].getX() >= (posObstaculo[i].x + posObstaculo[i].w) &&
+				bike[k].getY() < posObstaculo[i].y && bike[k].getY() >= (posObstaculo[i].y + posObstaculo[i].h))
+			{
+				bike[k].setFabrica(true);
+			}
+		}
+	}
+}
+
+
+void Mundo::setObstaculo(int x, int y, int w, int h)
+{
+	/*	Determina obstáculos (2)
+	Posicao obstáculo = x, y
+	Tamanho dos obstaculos = w, h	*/
+
+	for (int i = 0; i < tamanho_x; i++)
+	{
+		for (int j = 0; j < tamanho_y; j++)
+		{
+			// obstáculo 1 na posição x, y com tamanho w1, h1
+			if (i == x && j == y)
+			{
+				for (int k = 0; k < w; k++)
+				{
+					for (int l = 0; l < h; l++)
+						map[i + k][j + l] = '2';
+				}
+			}
+		}
+	}
+
+	// salva posicão dos obstáculos na struct RECT
+
+	rect p;
+	p.x = x;
+	p.y = y;
+	p.w = w;
+	p.h = h;
+
+	posObstaculo.push_back(p);
+}
+
+
+void Mundo::setMundo()
+{
+	/*	Determina o mundo padrão com
+	bordas (1)	*/
+
+	int i;
+	int j;
+
+	// mapa vazio (0)
+	for (i = 0; i < tamanho_x; i++)
+		for (j = 0; j < tamanho_y; j++)
+			map[i][j] = '0';
+
+	// bordas (1)
+	for (i = 0; i < tamanho_x; i++)
+	{
+		for (j = 0; j < tamanho_y; j++)
+		{
+			if (i == 0)								// primeira linha
+				map[i][j] = '1';
+			if (i == (tamanho_x - 1))				// ultima linha
+				map[i][j] = '1';
+			if (j == 0)								// coluna esquerda
+				map[i][j] = '1';
+			if (j == (tamanho_y - 1))				// coluna direita
+				map[i][j] = '1';
+		}
+	}
+
+	// obstáculos (2)
+	setObstaculo(5, 12, 5, 10);
+	setObstaculo(5, 98, 5, 10);
+	setObstaculo(30, 12, 5, 10);
+	setObstaculo(30, 98, 5, 10);
+	setObstaculo(16, 55, 6, 12);
+	//setObstaculo(5, 10, 30, 80);
+	numObstaculo += 5;
+
+	// copia para defaultMap
+	for (i = 0; i < tamanho_x; i++)
+	{
+		for (j = 0; j < tamanho_y; j++)
+		{
+			defaultMap[i][j] = map[i][j];
+		}
+	}
 }
 
 
@@ -359,98 +506,4 @@ void Mundo::printMundo(int car_size, int truck_size, int bike_size)
 
 	// retorna cursor para posição inicial
 	hw.setCursorPosition(0, 0);
-}
-
-
-void Mundo::setMundo()
-{
-	/*	Determina o mundo padrão com 
-		bordas (1)	*/
-
-	int i;
-	int j;
-
-	// mapa vazio (0)
-	for (i = 0; i < tamanho_x; i++)
-		for (j = 0; j < tamanho_y; j++)
-			map[i][j] = '0';
-
-	// bordas (1)
-	for (i = 0; i < tamanho_x; i++)
-	{
-		for (j = 0; j < tamanho_y; j++)
-		{
-			if (i == 0)								// primeira linha
-				map[i][j] = '1';					
-			if (i == (tamanho_x - 1))				// ultima linha
-				map[i][j] = '1';
-			if (j == 0)								// coluna esquerda
-				map[i][j] = '1';
-			if (j == (tamanho_y - 1))				// coluna direita
-				map[i][j] = '1';
-		}
-	}
-
-	// obstáculos (2)
-	setObstaculo(5, 12, 5, 10);
-	setObstaculo(5, 98, 5, 10);
-	setObstaculo(30, 12, 5, 10);
-	setObstaculo(30, 98, 5, 10);
-	setObstaculo(16, 55, 6, 12);
-
-	// copia para defaultMap
-	for (i = 0; i < tamanho_x; i++)
-	{
-		for (j = 0; j < tamanho_y; j++)
-		{
-			defaultMap[i][j] = map[i][j];
-		}
-	}
-
-	// salva x,y dos obstáculos
-	set_pos_obstaculo();
-}
-
-
-void Mundo::set_pos_obstaculo()
-{
-	for (int i = 0; i < 2; i++) {
-		posObstaculo.push_back(vector<int>());	// Add an empty row
-	}
-
-	for (int i = 0; i < tamanho_x; i++)
-	{
-		for (int j = 0; j < tamanho_y; j++)
-		{
-			if (defaultMap[i][j] == '2')
-			{
-				posObstaculo[0].push_back(i);	// adiciona posição na primeira linha
-				posObstaculo[1].push_back(j);	// adiciona posição na segunda linha
-			}
-		}
-	}
-}
-
-
-void Mundo::setObstaculo(int x, int y, int w, int h) 
-{
-	/*	Determina obstáculos (2) 
-		Posicao obstáculo = x, y
-	    Tamanho dos obstaculos = w, h	*/
-
-	for (int i = 0; i < tamanho_x; i++)
-	{
-		for (int j = 0; j < tamanho_y; j++)
-		{
-			// obstáculo 1 na posição x, y com tamanho w1, h1
-			if (i == x && j == y)
-			{
-				for (int k = 0; k < w; k++)
-				{
-					for (int l = 0; l < h; l++)
-						map[i + k][j + l] = '2';
-				}
-			}
-		}
-	}
 }
