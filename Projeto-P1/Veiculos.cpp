@@ -78,18 +78,30 @@ void Veiculos::move()
 
 	if (d == 1) 
 	{
-		x += v;					// move direita
+		for (int i = 0; i < v; i++)
+		{
+			x++;				// move baixo
+		}					
 	}
 	else if (d == 2) 
 	{
-		x -= v;					// move esquerda
+		for (int i = 0; i < v; i++)
+		{
+			x--;				// move cima
+		}
 	} 
 	else if (d == 3)
 	{
-		y += v;					// move cima
+		for (int i = 0; i < v; i++)
+		{
+			y++;				// move direita
+		}
 	}
 	else if (d == 4)
 	{
-		y -= v;					// move baixo
+		for (int i = 0; i < v; i++)
+		{
+			y--;				// move esquerda
+		}
 	}
 }
